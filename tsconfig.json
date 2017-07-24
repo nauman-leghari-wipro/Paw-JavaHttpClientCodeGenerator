@@ -1,0 +1,9 @@
+{
+    "compilerOptions" : {
+        "allowJs": false
+    },
+    "exclude" : [
+        "JavaHttpClientCodeGenerator.js", 
+        "node_modules"
+    ]
+}

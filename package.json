@@ -1,0 +1,19 @@
+{
+  "name": "paw-java-http-client-code-generator",
+  "version": "0.0.0",
+  "description": "A [Paw Extension](http://luckymarmot.com/paw/extensions/) that generates Java code using Apache Http Client.",
+  "main": "JavaHttpClientCodeGenerator.js",
+  "scripts": {
+    "tsc": "tsc",
+    "watch" : "nodemon",
+    "test": "bash test/test.sh"
+  },
+  "keywords": [],
+  "author": "Nauman Leghari",
+  "license": "MIT",
+  "dependencies": {
+    "nodemon": "^1.9.2",
+    "typescript": "^1.8.10"
+  }
+}
+
