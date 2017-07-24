@@ -43,6 +43,10 @@ const getHttpClassForMethod = (m: String) : String => {
     return `Http${convertedMethod}`;
 }
 
+const addHeadersCommands = (headers: any) : String => {
+    return Object.keys(headers).reduce((prevVal, elem) => prevVal + `request.add("${elem.trim()}", "${headers[elem].trim()}");\n\t\t`, "")
+}
+
 class JavaHttpClientCodeGenerator {
     static title = "Java Apache Http Client";
     static fileExtension = "java";
@@ -64,13 +68,9 @@ class JavaHttpClientCodeGenerator {
     }
 
     private generateRequest(request: Request) {
-        const headers = request.headers;
-        for (var key in headers) {
-            headers[key] = headers[key].trim();
-        }
-        
         const parsedUrl = new ParsedURL(request.url);
         const httpClassForMethod = getHttpClassForMethod(request.method);
+        const addingHeaders = addHeadersCommands(request.headers);
 
         return `// request ${request.name} 
 
@@ -93,6 +93,7 @@ public class TestClass {
     public void testHttpCall() throws IOException {
         // given
         ${httpClassForMethod} request = new ${httpClassForMethod}("${request.url}");
+        ${addingHeaders}
         
         // when
         HttpResponse response = HttpClientBuilder.create().build().execute(request);

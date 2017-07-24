@@ -23,12 +23,13 @@ cd ..
 make all
 cd test
 cat ../JavaHttpClientCodeGenerator.js call.js > testrun-generator.js
-node testrun-generator.js > testrun-executor.js 
-node testrun-executor.js > testrun-result.txt
+node testrun-generator.js > TestClass.java
+# node testrun-executor.js > testrun-result.txt
 
-grep_assert https://httpbin.org/post "Can't find httpbin URL" 
+# grep_assert https://httpbin.org/post "Can't find httpbin URL" 
 # @todo: Add support for headers and other things
 # grep_assert post-json-key "No JSON Body found"
 # grep_assert "STATUS: 200" "Do not see STATUS: 200"
 # grep_assert "X-Header-Value" "No Header Value found" 
-cleanup
+echo "All tests"
+# cleanup
